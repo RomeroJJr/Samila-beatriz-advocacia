@@ -1,0 +1,8 @@
+node_modules/
+.env
+.env.*
+!.env.example
+.vercel/
+.sites-runtime/
+*.tar.gz
+.DS_Store
