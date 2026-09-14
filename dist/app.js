@@ -101,5 +101,24 @@ function queueScrollEffects(){if(!scrollFrame)scrollFrame=requestAnimationFrame(
 window.addEventListener('scroll',queueScrollEffects,{passive:true});window.addEventListener('resize',queueScrollEffects,{passive:true});motionPreference.addEventListener('change',queueScrollEffects);updateScrollEffects();
 if('IntersectionObserver' in window){const activeSection=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){nav.querySelectorAll('a').forEach(link=>{if(link.hash==='#'+entry.target.id)link.setAttribute('aria-current','location');else link.removeAttribute('aria-current')})}})},{rootMargin:'-15% 0px -60% 0px',threshold:0});document.querySelectorAll('main section[id]').forEach(section=>activeSection.observe(section))}
 document.querySelectorAll('a[href^="#"]').forEach(link=>link.addEventListener('click',()=>{const target=document.getElementById(link.hash.slice(1));if(target&&!motionPreference.matches){target.classList.remove('nav-arrival');requestAnimationFrame(()=>target.classList.add('nav-arrival'));setTimeout(()=>target.classList.remove('nav-arrival'),1400)}}));
-function updateMobileConsultation(){const pastHero=heroSection.getBoundingClientRect().bottom<120;const bounds=document.querySelector('#agendar').getBoundingClientRect();const inBooking=bounds.top<innerHeight&&bounds.bottom>120;document.body.classList.toggle('show-mobile-consultation',pastHero&&!inBooking)}
+function updateMobileConsultation(){const headerBottom=siteHeader.getBoundingClientRect().bottom;const pastHero=heroSection.getBoundingClientRect().bottom<headerBottom;const bounds=document.querySelector('#agendar').getBoundingClientRect();const inBooking=bounds.top<innerHeight&&bounds.bottom>headerBottom;const atFooter=document.querySelector('footer').getBoundingClientRect().top<innerHeight;document.body.classList.toggle('show-mobile-consultation',pastHero&&!inBooking&&!atFooter)}
 let mobileFrame=0;window.addEventListener('scroll',()=>{if(!mobileFrame)mobileFrame=requestAnimationFrame(()=>{mobileFrame=0;updateMobileConsultation()})},{passive:true});window.addEventListener('resize',updateMobileConsultation);updateMobileConsultation();
+
+/* Decorative layers never receive pointer events; navigation stays native. */
+function syncHeaderHeight(){
+  document.documentElement.style.setProperty('--site-header-height',Math.ceil(siteHeader.getBoundingClientRect().height)+'px');
+  if(innerWidth>800)closeMenu();
+  updateMobileConsultation();
+}
+if('ResizeObserver' in window){const headerObserver=new ResizeObserver(syncHeaderHeight);headerObserver.observe(siteHeader);}
+window.addEventListener('resize',syncHeaderHeight,{passive:true});
+syncHeaderHeight();
+if('IntersectionObserver' in window){
+  const backdropObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{
+    if(entry.isIntersecting){entry.target.classList.add('section-in-view');backdropObserver.unobserve(entry.target)}
+  }),{threshold:0,rootMargin:'0px 0px -12% 0px'});
+  document.querySelectorAll('main>.section').forEach(section=>backdropObserver.observe(section));
+}
+function syncEditingState(){document.body.classList.toggle('editing-form',!!document.activeElement?.matches('select,textarea,input:not([type="radio"]):not([type="checkbox"])'));}
+document.addEventListener('focusin',syncEditingState);
+document.addEventListener('focusout',()=>setTimeout(syncEditingState,0));
