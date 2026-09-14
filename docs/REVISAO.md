@@ -45,3 +45,13 @@ A marcação estruturada descreve apenas a organização e a profissional com da
 - [Vercel: configuração estática](https://vercel.com/docs/project-configuration/vercel-json).
 - [Google: requisitos de dados estruturados para negócios locais](https://developers.google.com/search/docs/appearance/structured-data/local-business).
 - [MDN: preferência por movimento reduzido](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion).
+
+## Atualização de 14 de setembro de 2026
+
+Por solicitação do titular, a área de Direito Administrativo foi substituída por Direito Previdenciário em conteúdo, formulário, validação, checklist, metadados e contato vCard. O histórico da revisão acima descreve a versão anterior.
+
+A nova apresentação abrange aposentadorias, planejamento, incapacidade, auxílio-acidente, pensão por morte, salário-maternidade, BPC/LOAS (identificado como assistencial), contribuições e CNIS, pedidos, revisões e recursos. Uma seção explica o acompanhamento desde os documentos até a análise da decisão e eventual medida judicial. As condições dependem da análise individual e do serviço contratado.
+
+Terminologia conferida no [catálogo oficial de serviços do INSS](https://www.gov.br/inss/pt-br/canais_atendimento/servicos-por-canal-de-atendimento). Não foram incluídas regras de elegibilidade, cálculos ou prazos genéricos.
+
+A abertura passou a ter revelação do título por linhas, entrada gradual de texto e CTA, passagem suave de luz, contorno do retrato e destaque sequencial do selo. Os efeitos se encerram após a entrada e respeitam a preferência do dispositivo por movimento reduzido; não bloqueiam o agendamento com uma tela de carregamento.

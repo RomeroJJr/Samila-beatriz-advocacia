@@ -74,10 +74,10 @@ document.querySelector('#copy-message').addEventListener('click',async()=>{
 // Checklists are only in this page's memory. No persistence or document uploads.
 const preparationSets={
   work:{intro:'Se tiver estes registros, deixe-os separados para a conversa.',items:['Anotar as principais datas da relação de trabalho.','Separar contrato, registros de trabalho e comprovantes disponíveis.','Organizar mensagens e documentos relacionados à sua dúvida.','Listar suas perguntas e o que deseja esclarecer.'],area:'Direito Trabalhista'},
-  public:{intro:'Organize as informações do procedimento que deseja discutir.',items:['Anotar o órgão público e o assunto envolvido.','Separar comunicações, decisões e protocolos disponíveis.','Registrar datas e eventuais prazos informados nos documentos.','Listar suas dúvidas e as providências já tomadas.'],area:'Direito Administrativo'},
+  pension:{intro:'Separe o que já tiver. O escritório orientará quais documentos são necessários ao seu caso.',items:['Organizar o extrato de contribuições (CNIS), se disponível.','Separar registros de trabalho e comprovantes de contribuição.','Reunir protocolos, decisões e comunicações do INSS, se houver.','Anotar suas dúvidas e quais benefícios ou pedidos deseja discutir.'],area:'Direito Previdenciário'},
   general:{intro:'Você pode começar pelo que já sabe sobre a situação.',items:['Resumir o que aconteceu em ordem de datas.','Separar os documentos que já possui.','Anotar contatos e comunicações relevantes.','Listar suas principais perguntas para a consulta.'],area:'Preciso de orientação'}
 };
-const checkedItems={work:new Set(),public:new Set(),general:new Set()};
+const checkedItems={work:new Set(),pension:new Set(),general:new Set()};
 const prepSelect=document.querySelector('#preparation-area');
 function updatePreparationProgress(){const done=checkedItems[prepSelect.value].size;document.querySelector('#preparation-count').textContent=`${done} de 4 itens organizados`;document.querySelector('#preparation-progress').value=done}
 function renderPreparation(){

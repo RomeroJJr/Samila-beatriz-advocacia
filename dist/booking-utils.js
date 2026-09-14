@@ -1,6 +1,6 @@
 /* Shared, dependency-free booking rules, also exercised by Node tests. */
 (function (root) {
-  const AREAS = ['Direito Trabalhista', 'Direito Administrativo', 'Preciso de orientação'];
+  const AREAS = ['Direito Trabalhista', 'Direito Previdenciário', 'Preciso de orientação'];
   const FORMATS = ['Online', 'Presencial'];
   const PERIODS = ['Sem preferência', 'Manhã', 'Tarde'];
   function dateKey(date) {
