@@ -1,8 +1,9 @@
 node_modules/
+.next/
 .env
 .env.*
 !.env.example
 .vercel/
-.sites-runtime/
-*.tar.gz
+*.tsbuildinfo
 .DS_Store
+next-env.d.ts

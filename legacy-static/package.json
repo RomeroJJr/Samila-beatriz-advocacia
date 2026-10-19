@@ -1,0 +1,10 @@
+{
+  "name": "samila-beatriz-advocacia",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Site institucional de Samila Beatriz Advocacia",
+  "scripts": {
+    "test": "node --test tests/*.test.cjs",
+    "check": "node --check dist/app.js && node --check dist/booking-utils.js"
+  }
+}
